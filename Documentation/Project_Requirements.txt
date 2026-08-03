@@ -1,0 +1,60 @@
+PROJECT NAME:
+CampusConnect
+
+PROJECT TYPE:
+Mobile Application
+
+OBJECTIVE:
+CampusConnect is a digital platform designed to connect students,
+faculty members, and administrators through a single application.
+
+PROBLEM STATEMENT:
+Many educational institutions use separate systems for attendance,
+announcements, assignments, communication, and student services.
+CampusConnect aims to bring these activities into one integrated platform.
+
+TARGET USERS:
+
+1. Students
+- View attendance
+- Access timetable
+- Receive announcements
+- Submit assignments
+- View academic progress
+- Use AI assistant
+
+2. Faculty Members
+- Mark attendance
+- Upload study materials
+- Create announcements
+- Manage assignments
+- View student performance
+
+3. Administrators
+- Manage students and faculty
+- Manage departments
+- Generate reports
+- Monitor institution activities
+
+
+CORE FEATURES:
+
+1. User Authentication
+2. Student Dashboard
+3. Faculty Dashboard
+4. Attendance Management
+5. Timetable Management
+6. Assignment Management
+7. Notice Board
+8. Chat System
+9. AI Assistant
+10. Analytics Dashboard
+
+
+FUTURE FEATURES:
+
+- AI-based student performance prediction
+- Smart attendance analysis
+- Career guidance assistant
+- College event management
+- Placement tracking
