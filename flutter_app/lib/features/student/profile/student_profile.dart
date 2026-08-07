@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 
 class StudentProfile extends StatelessWidget {
 
+
   const StudentProfile({super.key});
+
 
 
   @override
@@ -12,162 +14,226 @@ class StudentProfile extends StatelessWidget {
 
     return Scaffold(
 
+
       appBar: AppBar(
 
         title:
+
         const Text(
+
           "Student Profile",
+
         ),
 
       ),
 
 
-      body: Padding(
 
-        padding:
-        const EdgeInsets.all(20),
+      body: SingleChildScrollView(
 
 
-        child: Column(
+        child: Padding(
 
 
-          children: [
+          padding:
+
+          const EdgeInsets.all(20),
 
 
-            CircleAvatar(
 
-              radius:50,
+          child: Column(
 
-              backgroundColor:
-              Colors.blue,
 
-              child:
-              const Icon(
+            children: [
 
-                Icons.person,
 
-                size:60,
 
-                color:Colors.white,
+              const CircleAvatar(
+
+
+                radius:50,
+
+
+                backgroundColor:
+
+                Colors.blue,
+
+
+                child:
+
+                Icon(
+
+
+                  Icons.person,
+
+
+                  size:60,
+
+
+                  color:Colors.white,
+
+
+                ),
+
 
               ),
 
-            ),
-
-
-            const SizedBox(height:20),
 
 
 
-            const Text(
+              const SizedBox(height:20),
 
-              "Indhujaa D",
 
-              style:
-              TextStyle(
 
-                fontSize:24,
 
-                fontWeight:
-                FontWeight.bold,
+              const Text(
+
+
+                "Indhujaa D",
+
+
+                style:
+
+                TextStyle(
+
+
+                  fontSize:24,
+
+
+                  fontWeight:
+
+                  FontWeight.bold,
+
+
+                ),
+
 
               ),
 
-            ),
-
-
-            const SizedBox(height:20),
 
 
 
-            profileCard(
-
-              "Roll Number",
-
-              "CSE2026001",
-
-            ),
+              const SizedBox(height:20),
 
 
-            profileCard(
-
-              "Department",
-
-              "Computer Science Engineering",
-
-            ),
 
 
-            profileCard(
+              profileCard(
 
-              "Year",
+                "Roll Number",
 
-              "Final Year",
+                "CSE2026001",
 
-            ),
-
-
-            profileCard(
-
-              "Email",
-
-              "student@gmail.com",
-
-            ),
+              ),
 
 
-            profileCard(
-
-              "Phone",
-
-              "9876543210",
-
-            ),
 
 
-            profileCard(
+              profileCard(
 
-              "Hostel",
+                "Department",
 
-              "Block A - Room 101",
+                "Computer Science Engineering",
 
-            ),
+              ),
 
 
-          ],
+
+
+              profileCard(
+
+                "Year",
+
+                "Final Year",
+
+              ),
+
+
+
+
+              profileCard(
+
+                "Email",
+
+                "student@gmail.com",
+
+              ),
+
+
+
+
+              profileCard(
+
+                "Phone",
+
+                "9876543210",
+
+              ),
+
+
+
+
+              profileCard(
+
+                "Hostel",
+
+                "Block A - Room 101",
+
+              ),
+
+
+
+            ],
+
+
+          ),
 
 
         ),
 
+
       ),
+
 
     );
+
 
   }
 
 
 
-  Widget profileCard(String title,String value){
+
+
+
+  Widget profileCard(String title, String value){
 
 
     return Card(
+
 
       elevation:3,
 
 
       margin:
+
       const EdgeInsets.symmetric(
 
+
         vertical:8,
+
 
       ),
 
 
+
       child:
+
       ListTile(
 
 
+
         leading:
+
         const Icon(
 
           Icons.info,
@@ -175,7 +241,10 @@ class StudentProfile extends StatelessWidget {
         ),
 
 
+
+
         title:
+
         Text(
 
           title,
@@ -183,12 +252,17 @@ class StudentProfile extends StatelessWidget {
         ),
 
 
+
+
         subtitle:
+
         Text(
 
           value,
 
         ),
+
+
 
 
       ),
