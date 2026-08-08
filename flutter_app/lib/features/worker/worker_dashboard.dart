@@ -2,43 +2,39 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/common/dashboard_card.dart';
 
-import 'profile/child_profile.dart';
-import 'attendance/child_attendance.dart';
-import 'marks/child_marks.dart';
-import 'fees/fee_details.dart';
-import 'activities/student_activity.dart';
+import 'profile/worker_profile.dart';
+import 'requests/service_requests.dart';
+import 'tasks/worker_tasks.dart';
+import 'complaints/worker_complaints.dart';
+import 'attendance/worker_attendance.dart';
 
-class ParentDashboard extends StatelessWidget {
-  const ParentDashboard({super.key});
+class WorkerDashboard extends StatelessWidget {
+  const WorkerDashboard({super.key});
 
   final List<Map<String, dynamic>> services = const [
     {
-      "title": "Child Profile",
+      "title": "Worker Profile",
       "icon": Icons.person,
+    },
+    {
+      "title": "Service Requests",
+      "icon": Icons.miscellaneous_services,
+    },
+    {
+      "title": "My Tasks",
+      "icon": Icons.task,
     },
     {
       "title": "Attendance",
       "icon": Icons.fact_check,
     },
     {
-      "title": "Marks & Results",
-      "icon": Icons.grade,
-    },
-    {
-      "title": "Fees Details",
-      "icon": Icons.currency_rupee,
-    },
-    {
-      "title": "Student Activities",
-      "icon": Icons.school,
+      "title": "Complaints",
+      "icon": Icons.report_problem,
     },
     {
       "title": "Notifications",
       "icon": Icons.notifications,
-    },
-    {
-      "title": "Teacher Complaints",
-      "icon": Icons.report_problem,
     },
   ];
 
@@ -46,35 +42,26 @@ class ParentDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Parent Dashboard",
-        ),
+        title: const Text("Worker Dashboard"),
       ),
-
       body: Padding(
         padding: const EdgeInsets.all(16),
-
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-
           children: [
             const Text(
-              "Welcome Parent 👋",
-
+              "Welcome Worker 👋",
               style: TextStyle(
                 fontSize: 26,
                 fontWeight: FontWeight.bold,
               ),
             ),
 
-            const SizedBox(height: 10),
+            const SizedBox(height: 8),
 
             const Text(
-              "Monitor your child's academic progress",
-
-              style: TextStyle(
-                fontSize: 16,
-              ),
+              "Manage your campus service tasks",
+              style: TextStyle(fontSize: 16),
             ),
 
             const SizedBox(height: 20),
@@ -82,89 +69,66 @@ class ParentDashboard extends StatelessWidget {
             Expanded(
               child: GridView.builder(
                 itemCount: services.length,
-
                 gridDelegate:
                     const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 15,
                   mainAxisSpacing: 15,
-                  childAspectRatio: 1.1,
                 ),
-
                 itemBuilder: (context, index) {
-                  final String selectedService =
+                  final selectedService =
                       services[index]["title"];
 
                   return DashboardCard(
                     title: selectedService,
                     icon: services[index]["icon"],
-
                     onTap: () {
-                      if (selectedService == "Child Profile") {
+                      if (selectedService == "Worker Profile") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const ChildProfile(),
+                                const WorkerProfile(),
                           ),
                         );
-                      }
-
-                      else if (selectedService == "Attendance") {
+                      } else if (selectedService ==
+                          "Service Requests") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const ChildAttendance(),
+                                const ServiceRequests(),
                           ),
                         );
-                      }
-
-                      else if (selectedService == "Marks & Results") {
+                      } else if (selectedService == "My Tasks") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const ChildMarks(),
+                                const WorkerTasks(),
                           ),
                         );
-                      }
-
-                      else if (selectedService == "Fees Details") {
+                      } else if (selectedService == "Attendance") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const FeeDetails(),
+                                const WorkerAttendance(),
                           ),
                         );
-                      }
-
-                      else if (selectedService == "Student Activities") {
+                      } else if (selectedService == "Complaints") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const StudentActivity(),
+                                const WorkerComplaints(),
                           ),
                         );
-                      }
-
-                      else if (selectedService == "Notifications") {
+                      } else {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
+                          SnackBar(
                             content: Text(
-                              "Notifications feature coming soon",
-                            ),
-                          ),
-                        );
-                      }
-
-                      else if (selectedService == "Teacher Complaints") {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                              "Teacher complaints feature coming soon",
+                              "$selectedService selected",
                             ),
                           ),
                         );

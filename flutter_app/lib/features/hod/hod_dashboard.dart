@@ -2,50 +2,45 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/common/dashboard_card.dart';
 
-import 'profile/teacher_profile.dart';
-import 'attendance/attendance_management.dart';
-import 'marks/marks_entry.dart';
-import 'assignments/assignment_upload.dart';
-import 'assignments/assignment_review.dart';
-import 'complaints/student_complaint.dart';
-import 'meetings/online_class.dart';
-import 'services/teacher_service_request.dart';
+import 'profile/hod_profile.dart';
+import 'students/student_management.dart';
+import 'attendance/attendance_overview.dart';
+import 'marks/marks_overview.dart';
+import 'faculty/faculty_management.dart';
+import 'complaints/complaint_management.dart';
+import 'reports/department_reports.dart';
 
-class TeacherDashboard extends StatelessWidget {
-  const TeacherDashboard({super.key});
+class HodDashboard extends StatelessWidget {
+  const HodDashboard({super.key});
 
   final List<Map<String, dynamic>> services = const [
     {
-      "title": "My Profile",
+      "title": "HOD Profile",
       "icon": Icons.person,
     },
     {
-      "title": "Attendance Management",
+      "title": "Student Management",
+      "icon": Icons.people,
+    },
+    {
+      "title": "Attendance Overview",
       "icon": Icons.fact_check,
     },
     {
-      "title": "Marks Entry",
+      "title": "Marks Overview",
       "icon": Icons.grade,
     },
     {
-      "title": "Upload Assignment",
-      "icon": Icons.upload_file,
+      "title": "Faculty Management",
+      "icon": Icons.school,
     },
     {
-      "title": "Review Assignment",
-      "icon": Icons.assignment_turned_in,
-    },
-    {
-      "title": "Online Class",
-      "icon": Icons.video_call,
-    },
-    {
-      "title": "Student Complaint",
+      "title": "Complaints",
       "icon": Icons.report_problem,
     },
     {
-      "title": "Service Request",
-      "icon": Icons.miscellaneous_services,
+      "title": "Department Reports",
+      "icon": Icons.bar_chart,
     },
     {
       "title": "Notifications",
@@ -58,7 +53,7 @@ class TeacherDashboard extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Teacher Dashboard",
+          "HOD Dashboard",
         ),
       ),
 
@@ -70,7 +65,7 @@ class TeacherDashboard extends StatelessWidget {
 
           children: [
             const Text(
-              "Welcome Teacher 👋",
+              "Welcome HOD 👋",
 
               style: TextStyle(
                 fontSize: 26,
@@ -78,10 +73,11 @@ class TeacherDashboard extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 10),
+            const SizedBox(height: 8),
 
             const Text(
-              "Manage classes, students and academic activities",
+              "Manage your department efficiently",
+
               style: TextStyle(
                 fontSize: 16,
               ),
@@ -102,95 +98,92 @@ class TeacherDashboard extends StatelessWidget {
                 ),
 
                 itemBuilder: (context, index) {
-                  final String selected =
+                  final String selectedService =
                       services[index]["title"];
 
                   return DashboardCard(
-                    title: selected,
+                    title: selectedService,
                     icon: services[index]["icon"],
 
                     onTap: () {
-                      if (selected == "My Profile") {
+                      if (selectedService == "HOD Profile") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const TeacherProfile(),
+                                const HodProfile(),
                           ),
                         );
                       }
 
-                      else if (selected == "Attendance Management") {
+                      else if (selectedService ==
+                          "Student Management") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const AttendanceManagement(),
+                                const StudentManagement(),
                           ),
                         );
                       }
 
-                      else if (selected == "Marks Entry") {
+                      else if (selectedService ==
+                          "Attendance Overview") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const MarksEntry(),
+                                const AttendanceOverview(),
                           ),
                         );
                       }
 
-                      else if (selected == "Upload Assignment") {
+                      else if (selectedService ==
+                          "Marks Overview") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const AssignmentUpload(),
+                                const MarksOverview(),
                           ),
                         );
                       }
 
-                      else if (selected == "Review Assignment") {
+                      else if (selectedService ==
+                          "Faculty Management") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const AssignmentReview(),
+                                const FacultyManagement(),
                           ),
                         );
                       }
 
-                      else if (selected == "Online Class") {
+                      else if (selectedService ==
+                          "Complaints") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const OnlineClass(),
+                                const ComplaintManagement(),
                           ),
                         );
                       }
 
-                      else if (selected == "Student Complaint") {
+                      else if (selectedService ==
+                          "Department Reports") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const StudentComplaint(),
+                                const DepartmentReports(),
                           ),
                         );
                       }
 
-                      else if (selected == "Service Request") {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                const TeacherServiceRequest(),
-                          ),
-                        );
-                      }
-
-                      else if (selected == "Notifications") {
+                      else if (selectedService ==
+                          "Notifications") {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text(

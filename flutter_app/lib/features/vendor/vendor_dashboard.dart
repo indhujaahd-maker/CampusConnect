@@ -2,43 +2,39 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/common/dashboard_card.dart';
 
-import 'profile/child_profile.dart';
-import 'attendance/child_attendance.dart';
-import 'marks/child_marks.dart';
-import 'fees/fee_details.dart';
-import 'activities/student_activity.dart';
+import 'profile/vendor_profile.dart';
+import 'orders/vendor_orders.dart';
+import 'products/vendor_products.dart';
+import 'payments/vendor_payments.dart';
+import 'complaints/vendor_complaints.dart';
 
-class ParentDashboard extends StatelessWidget {
-  const ParentDashboard({super.key});
+class VendorDashboard extends StatelessWidget {
+  const VendorDashboard({super.key});
 
   final List<Map<String, dynamic>> services = const [
     {
-      "title": "Child Profile",
+      "title": "Vendor Profile",
       "icon": Icons.person,
     },
     {
-      "title": "Attendance",
-      "icon": Icons.fact_check,
+      "title": "Orders",
+      "icon": Icons.shopping_bag,
     },
     {
-      "title": "Marks & Results",
-      "icon": Icons.grade,
+      "title": "Products",
+      "icon": Icons.inventory,
     },
     {
-      "title": "Fees Details",
+      "title": "Payments",
       "icon": Icons.currency_rupee,
     },
     {
-      "title": "Student Activities",
-      "icon": Icons.school,
+      "title": "Complaints",
+      "icon": Icons.report_problem,
     },
     {
       "title": "Notifications",
       "icon": Icons.notifications,
-    },
-    {
-      "title": "Teacher Complaints",
-      "icon": Icons.report_problem,
     },
   ];
 
@@ -46,35 +42,26 @@ class ParentDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Parent Dashboard",
-        ),
+        title: const Text("Vendor Dashboard"),
       ),
-
       body: Padding(
         padding: const EdgeInsets.all(16),
-
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-
           children: [
             const Text(
-              "Welcome Parent 👋",
-
+              "Welcome Vendor 👋",
               style: TextStyle(
                 fontSize: 26,
                 fontWeight: FontWeight.bold,
               ),
             ),
 
-            const SizedBox(height: 10),
+            const SizedBox(height: 8),
 
             const Text(
-              "Monitor your child's academic progress",
-
-              style: TextStyle(
-                fontSize: 16,
-              ),
+              "Manage your campus services",
+              style: TextStyle(fontSize: 16),
             ),
 
             const SizedBox(height: 20),
@@ -82,89 +69,65 @@ class ParentDashboard extends StatelessWidget {
             Expanded(
               child: GridView.builder(
                 itemCount: services.length,
-
                 gridDelegate:
                     const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 15,
                   mainAxisSpacing: 15,
-                  childAspectRatio: 1.1,
                 ),
-
                 itemBuilder: (context, index) {
-                  final String selectedService =
+                  final selectedService =
                       services[index]["title"];
 
                   return DashboardCard(
                     title: selectedService,
                     icon: services[index]["icon"],
-
                     onTap: () {
-                      if (selectedService == "Child Profile") {
+                      if (selectedService == "Vendor Profile") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const ChildProfile(),
+                                const VendorProfile(),
                           ),
                         );
-                      }
-
-                      else if (selectedService == "Attendance") {
+                      } else if (selectedService == "Orders") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const ChildAttendance(),
+                                const VendorOrders(),
                           ),
                         );
-                      }
-
-                      else if (selectedService == "Marks & Results") {
+                      } else if (selectedService == "Products") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const ChildMarks(),
+                                const VendorProducts(),
                           ),
                         );
-                      }
-
-                      else if (selectedService == "Fees Details") {
+                      } else if (selectedService == "Payments") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const FeeDetails(),
+                                const VendorPayments(),
                           ),
                         );
-                      }
-
-                      else if (selectedService == "Student Activities") {
+                      } else if (selectedService == "Complaints") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                const StudentActivity(),
+                                const VendorComplaints(),
                           ),
                         );
-                      }
-
-                      else if (selectedService == "Notifications") {
+                      } else {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
+                          SnackBar(
                             content: Text(
-                              "Notifications feature coming soon",
-                            ),
-                          ),
-                        );
-                      }
-
-                      else if (selectedService == "Teacher Complaints") {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                              "Teacher complaints feature coming soon",
+                              "$selectedService selected",
                             ),
                           ),
                         );
